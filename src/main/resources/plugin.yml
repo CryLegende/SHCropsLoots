@@ -1,0 +1,16 @@
+name: SHCropsLoots
+version: '${project.version}'
+main: org.Cry_Legende.sHCropsLoots.SHCropsLoots
+api-version: '1.20'
+author: Cry_Legende
+
+commands:
+  shcropsloots:
+    description: Gestion des loots de cultures
+    usage: /shcropsloots <add|remove|list>
+    permission: shcropsloots.admin
+
+permissions:
+  shcropsloots.admin:
+    description: Permet de gérer les loots des cultures
+    default: op

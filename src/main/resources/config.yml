@@ -1,0 +1,137 @@
+# Configuration des crops
+crops:
+  WHEAT:
+    enabled: true
+    exp: 2
+    chanceExp: 20   # % de chance de drop d'orbe d'exp
+    chanceItem: 0.08  # % de chance de drop d'item
+    drops:
+      poche_encre_luisante: 8 # % de chance de drop cet item
+      gravier_suspect: 1
+      poche_encre: 32
+      fiole_exp: 20
+      bloc_herbe: 40
+      cle_ordinaire: 1
+      pousse_cerisier: 8
+  POTATOES:
+    enabled: true
+    exp: 2
+    chanceExp: 20
+    chanceItem: 0.08
+    drops:
+      poche_encre_luisante: 8
+      gravier_suspect: 1
+      poche_encre: 32
+      fiole_exp: 20
+      bloc_herbe: 40
+      cle_ordinaire: 1
+      pousse_cerisier: 8
+  CARROTS:
+    enabled: true
+    exp: 2
+    chanceExp: 20
+    chanceItem: 0.08
+    drops:
+      poche_encre_luisante: 8
+      gravier_suspect: 1
+      poche_encre: 32
+      fiole_exp: 20
+      bloc_herbe: 40
+      cle_ordinaire: 1
+      pousse_cerisier: 8
+  CACTUS:
+    enabled: true
+    exp: 1
+    chanceExp: 5
+    chanceItem: 0.08
+    drops:
+      poche_encre_luisante: 8
+      gravier_suspect: 1
+      poche_encre: 32
+      fiole_exp: 20
+      bloc_herbe: 40
+      cle_ordinaire: 1
+      pousse_cerisier: 8
+  KELP:
+    enabled: true
+    exp: 1
+    chanceExp: 10
+    chanceItem: 0.08
+    drops:
+      poche_encre_luisante: 8
+      gravier_suspect: 1
+      poche_encre: 32
+      fiole_exp: 20
+      bloc_herbe: 40
+      cle_ordinaire: 1
+      pousse_cerisier: 8
+  MELON:
+    enabled: true
+    exp: 3
+    chanceExp: 30
+    chanceItem: 0.08
+    drops:
+      poche_encre_luisante: 8
+      gravier_suspect: 1
+      poche_encre: 32
+      fiole_exp: 20
+      bloc_herbe: 40
+      cle_ordinaire: 1
+      pousse_cerisier: 8
+  PUMPKIN:
+    enabled: true
+    exp: 3
+    chanceExp: 30
+    chanceItem: 0.08
+    drops:
+      poche_encre_luisante: 8
+      gravier_suspect: 1
+      poche_encre: 32
+      fiole_exp: 20
+      bloc_herbe: 40
+      cle_ordinaire: 1
+      pousse_cerisier: 8
+  BEETROOTS:
+    enabled: true
+    exp: 3
+    chanceExp: 35
+    chanceItem: 0.08
+    drops:
+      poche_encre_luisante: 8
+      gravier_suspect: 1
+      poche_encre: 32
+      fiole_exp: 20
+      bloc_herbe: 40
+      cle_ordinaire: 1
+      pousse_cerisier: 8
+  NETHER_WART:
+    enabled: true
+    exp: 5
+    chanceExp: 20
+    chanceItem: 0.08
+    drops:
+      quartz: 10
+      champi_brun: 10
+      champi_rouge: 10
+      champi_carmin: 10
+      champi_biscornu: 10
+      creme_magma: 10
+      champilampe: 10
+      cle_ordinaire: 5
+  COCOA:
+    enabled: true
+    exp: 6
+    chanceExp: 30
+    chanceItem: 0.15
+    drops:
+      oeuf_renifleur: 2
+      fiole_exp: 5
+      cle_ordinaire: 1
+      pousse_acajou: 10
+      cookie: 15
+
+# Message global affiché lors d'un drop (peut être désactivé en laissant vide)
+globalMessage: "&7&l« &bAgriculture &8&l» &7Vous avez trouvé quelque chose en retournant la terre !"
+
+# Cooldown (en secondes) pour les crops spéciaux (non ageables) afin d'éviter les abus de casser/ poser
+specialCooldown: 60
