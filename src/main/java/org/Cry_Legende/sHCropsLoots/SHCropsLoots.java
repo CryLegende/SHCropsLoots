@@ -22,11 +22,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SHCropsLoots extends JavaPlugin {
 
     // Map pour stocker les loots custom (clé = nom, valeur = item)
     private final Map<String, ItemStack> lootItems = new HashMap<>();
+
+    // Sections « crops.<MATERIAL> » actives, lues une fois au démarrage : BlockBreakEvent est déclenché pour
+    // tous les blocs cassés du serveur, pas question de refaire une recherche dans la config à chaque fois
+    private final Map<Material, ConfigurationSection> cropSections = new EnumMap<>(Material.class);
 
     // Fichier et configuration pour les loots (loots.yml)
     private File lootFile;
@@ -39,12 +44,33 @@ public class SHCropsLoots extends JavaPlugin {
 
         // Charger le fichier des loots
         loadLoots();
+        loadCrops();
 
         // Enregistrer la commande et son exécuteur
         getCommand("shcropsloots").setExecutor(new SHCropsLootsCommand());
 
         // Enregistrer l'écouteur d'événements
         getServer().getPluginManager().registerEvents(new CropListener(), this);
+    }
+
+    private void loadCrops() {
+        cropSections.clear();
+        ConfigurationSection crops = getConfig().getConfigurationSection("crops");
+        if (crops == null) {
+            return;
+        }
+        for (String key : crops.getKeys(false)) {
+            ConfigurationSection section = crops.getConfigurationSection(key);
+            if (section == null || !section.getBoolean("enabled", false)) {
+                continue;
+            }
+            Material material = Material.getMaterial(key);
+            if (material == null) {
+                getLogger().warning("Culture inconnue dans config.yml : " + key);
+                continue;
+            }
+            cropSections.put(material, section);
+        }
     }
 
     /*-------------------- Gestion du fichier loots.yml --------------------*/
@@ -128,7 +154,8 @@ public class SHCropsLoots extends JavaPlugin {
                     sender.sendMessage(ChatColor.RED + "Vous devez tenir un item en main.");
                     return true;
                 }
-                addLoot(args[1], item);
+                // Copie : l'item en main est l'objet du joueur, il changerait (ou disparaîtrait) dès qu'il l'utilise
+                addLoot(args[1], item.clone());
                 sender.sendMessage(ChatColor.GREEN + "Loot '" + args[1] + "' ajouté !");
                 return true;
             } else if (args[0].equalsIgnoreCase("remove")) {
@@ -178,8 +205,8 @@ public class SHCropsLoots extends JavaPlugin {
             Player player = event.getPlayer();
 
             // Récupérer la configuration du crop selon son Material
-            ConfigurationSection cropSection = getConfig().getConfigurationSection("crops." + material.name());
-            if (cropSection == null || !cropSection.getBoolean("enabled", false)) {
+            ConfigurationSection cropSection = cropSections.get(material);
+            if (cropSection == null) {
                 return;
             }
 
@@ -228,7 +255,7 @@ public class SHCropsLoots extends JavaPlugin {
             int chanceExp = cropSection.getInt("chanceExp", 0);
             double chanceItem = cropSection.getDouble("chanceItem", 0.0);
             int expAmount = cropSection.getInt("exp", 0);
-            Random random = new Random();
+            Random random = ThreadLocalRandom.current();
 
             // Gestion du drop d'orbe d'exp
             if (chanceExp > 0 && random.nextInt(100) < chanceExp) {
