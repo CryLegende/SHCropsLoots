@@ -1,3 +1,37 @@
+# ======================================================================== #
+# SHCropsLoots
+#
+# Plugin : une récolte de culture a une chance de donner une orbe d'expérience et un loot bonus choisi parmi les
+# objets enregistrés dans loots.yml (objets personnalisés, clés de caisse...). Seules les cultures arrivées à
+# maturité comptent (blé, carottes...), les pastèques et citrouilles doivent avoir poussé sur une tige, et les
+# cultures sans âge (cactus, canne à sucre, kelp) ont un délai par bloc.
+#
+# Commande (alias : aucun) :
+#   /shcropsloots add <nom>             Ajoute l'objet en main à loots.yml.
+#   /shcropsloots remove <nom>          Retire un loot.
+#   /shcropsloots list                  Liste les loots enregistrés.
+#   /shcropsloots give <nom> [joueur]   Donne un exemplaire d'un loot (à soi ou à un joueur connecté).
+#   /shcropsloots reload                Relit config.yml, loots.yml et messages.yml. Un fichier illisible ne change rien.
+#
+# Permissions (par défaut : op) :
+#   shcropsloots.admin          Toutes les sous-commandes.
+#   shcropsloots.admin.add      /shcropsloots add
+#   shcropsloots.admin.remove   /shcropsloots remove
+#   shcropsloots.admin.list     /shcropsloots list
+#   shcropsloots.admin.give     /shcropsloots give
+#   shcropsloots.admin.reload   /shcropsloots reload
+#
+# Les textes (dont celui d'un loot trouvé) sont dans messages.yml.
+#
+# crops.<MATERIAL> :
+#   enabled      Activer la culture.
+#   exp          Expérience de l'orbe.
+#   chanceExp    Chance, en pourcentage, de faire apparaître l'orbe.
+#   chanceItem   Chance, en pourcentage, de donner un loot.
+#   drops        Poids de chaque loot (nom dans loots.yml) quand un loot est donné. Sans drops, tous les loots ont le
+#                même poids.
+# ======================================================================== #
+
 # Configuration des crops
 crops:
   WHEAT:
@@ -129,9 +163,6 @@ crops:
       cle_ordinaire: 1
       pousse_acajou: 10
       cookie: 15
-
-# Message global affiché lors d'un drop (peut être désactivé en laissant vide)
-globalMessage: "&7&l« &bAgriculture &8&l» &7Vous avez trouvé quelque chose en retournant la terre !"
 
 # Cooldown (en secondes) pour les crops spéciaux (non ageables) afin d'éviter les abus de casser/ poser
 specialCooldown: 60

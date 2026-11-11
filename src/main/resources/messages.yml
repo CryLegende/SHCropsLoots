@@ -1,0 +1,39 @@
+# Messages de SHCropsLoots. Couleurs avec &. Un message vide ("") n'est pas envoyé.
+#
+# Variables :
+#   %subcommands%  sous-commandes que l'expéditeur peut utiliser, séparées par |
+#   %name%         nom d'un loot
+#   %player%       nom d'un joueur
+#   %count%        nombre de loots
+#   %item%         type d'objet d'un loot
+#   %amount%       quantité d'un loot
+#   %crops%        cultures actives
+#   %loots%        loots chargés
+#   %names%        noms ignorés au rechargement
+#   %file%         fichier illisible
+#   %error%        première ligne de l'erreur du fichier
+
+# Affiché au joueur quand une récolte donne un loot (déjà sans préfixe : le texte est complet).
+loot-found: "&7&l« &bAgriculture &8&l» &7Vous avez trouvé quelque chose en retournant la terre !"
+
+no-permission: "&7&l« &f&lSH &8&l» &fCommande inconnue, essayez autre chose."
+usage: "&7&l« &6&lSH &8&l» &7Utilisation : &6/shcropsloots <%subcommands%>"
+usage-add: "&7&l« &6&lSH &8&l» &7Utilisation : &6/shcropsloots add <nom>"
+usage-remove: "&7&l« &6&lSH &8&l» &7Utilisation : &6/shcropsloots remove <nom>"
+usage-give: "&7&l« &6&lSH &8&l» &7Utilisation : &6/shcropsloots give <nom> [joueur]"
+player-only: "&7&l« &c&lSH &8&l» &7Cette commande demande un &cjoueur&7."
+player-not-found: "&7&l« &c&lSH &8&l» &7Le joueur &c%player% &7n'est pas connecté."
+hold-item: "&7&l« &c&lSH &8&l» &7Vous devez tenir un &cobjet &7en main."
+loot-added: "&7&l« &a&lSH &8&l» &7Loot &a%name% &7ajouté."
+loot-removed: "&7&l« &a&lSH &8&l» &7Loot &a%name% &7supprimé."
+loot-not-found: "&7&l« &c&lSH &8&l» &7Le loot &c%name% &7n'existe pas."
+loots-unreadable: "&7&l« &c&lSH &8&l» &7loots.yml est &cillisible&7 : rien n'a été écrit. Corrigez le fichier puis &c/shcropsloots reload&7."
+save-failed: "&7&l« &c&lSH &8&l» &7Écriture de loots.yml &cimpossible&7, voir la console."
+list-empty: "&7&l« &e&lSH &8&l» &7Aucun loot configuré."
+list-header: "&7&l« &6&lSH &8&l» &6%count% &7loot(s) :"
+list-entry: "&8• &f%name% &7(%item% x%amount%)"
+give-ok: "&7&l« &a&lSH &8&l» &7Loot &a%name% &7donné à &a%player%&7."
+reload-ok: "&7&l« &a&lSH &8&l» &7Configuration rechargée : &a%crops% &7culture(s) active(s), &a%loots% &7loot(s)."
+reload-unreadable-loots: "&7&l« &e&lSH &8&l» &7Loot(s) illisible(s) ignoré(s) : &e%names%&7."
+reload-unknown-crops: "&7&l« &e&lSH &8&l» &7Culture(s) inconnue(s) ignorée(s) : &e%names%&7."
+reload-error: "&7&l« &c&lSH &8&l» &7Rechargement annulé, &crien n'a été changé&7. Fichier &c%file%&7 : &c%error%"

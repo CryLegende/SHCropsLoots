@@ -7,10 +7,30 @@ author: Cry_Legende
 commands:
   shcropsloots:
     description: Gestion des loots de cultures
-    usage: /shcropsloots <add|remove|list>
-    permission: shcropsloots.admin
+    usage: /shcropsloots <add|remove|list|reload|give>
 
 permissions:
   shcropsloots.admin:
-    description: Permet de gérer les loots des cultures
+    description: Toute l'administration de SHCropsLoots
+    default: op
+    children:
+      shcropsloots.admin.add: true
+      shcropsloots.admin.remove: true
+      shcropsloots.admin.list: true
+      shcropsloots.admin.reload: true
+      shcropsloots.admin.give: true
+  shcropsloots.admin.add:
+    description: Ajouter l'objet en main à la table des loots
+    default: op
+  shcropsloots.admin.remove:
+    description: Retirer un loot de la table
+    default: op
+  shcropsloots.admin.list:
+    description: Lister les loots enregistrés
+    default: op
+  shcropsloots.admin.reload:
+    description: Recharger config.yml, loots.yml et messages.yml
+    default: op
+  shcropsloots.admin.give:
+    description: Donner un exemplaire d'un loot enregistré
     default: op

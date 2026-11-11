@@ -22,13 +22,28 @@ Utilisé sur : **Opale**.
 
 | Commande | Alias | Description | Permission |
 |---|---|---|---|
-| `/shcropsloots` | — | Gestion des loots de cultures | `shcropsloots.admin` |
+| `/shcropsloots add <nom>` | — | Ajoute l'objet en main à `loots.yml`. | `shcropsloots.admin.add` |
+| `/shcropsloots remove <nom>` | — | Retire un loot. | `shcropsloots.admin.remove` |
+| `/shcropsloots list` | — | Liste les loots enregistrés. | `shcropsloots.admin.list` |
+| `/shcropsloots give <nom> [joueur]` | — | Donne un exemplaire d'un loot. | `shcropsloots.admin.give` |
+| `/shcropsloots reload` | — | Relit `config.yml`, `loots.yml` et `messages.yml`. Un fichier illisible ne change rien. | `shcropsloots.admin.reload` |
+
+Sans argument, ou avec une sous-commande inconnue, une ligne d'usage ne liste que les sous-commandes permises à l'expéditeur. `add` et `give` sans joueur ciblé demandent un joueur ; les autres marchent depuis la console.
 
 ## Permissions
 
 | Permission | Description | Par défaut |
 |---|---|---|
-| `shcropsloots.admin` | Permet de gérer les loots des cultures | `op` |
+| `shcropsloots.admin` | Toute l'administration (parent des cinq nœuds suivants). | `op` |
+| `shcropsloots.admin.add` | Ajouter l'objet en main à la table des loots. | `op` |
+| `shcropsloots.admin.remove` | Retirer un loot. | `op` |
+| `shcropsloots.admin.list` | Lister les loots. | `op` |
+| `shcropsloots.admin.give` | Donner un exemplaire d'un loot. | `op` |
+| `shcropsloots.admin.reload` | Recharger la configuration. | `op` |
+
+## Messages
+
+Tous les textes sont dans `messages.yml`, dont celui d'un loot trouvé (`loot-found`, qui était la clé `globalMessage` de `config.yml`). Au premier démarrage avec cette version, `messages.yml` est créé à partir de la valeur de `globalMessage` du `config.yml` existant ; cette clé n'est plus lue ensuite.
 
 ## Configuration
 
@@ -36,7 +51,9 @@ Fichiers par défaut repris du serveur (secrets remplacés par `CHANGE_ME`). Cli
 
 <pre>
 plugins/SHCropsLoots/
-└── <a href="src/main/resources/config.yml">config.yml</a>
+├── <a href="src/main/resources/config.yml">config.yml</a>
+├── <a href="src/main/resources/messages.yml">messages.yml</a>
+└── loots.yml            créé par /shcropsloots add (objets sérialisés)
 </pre>
 
 ## Compilation
