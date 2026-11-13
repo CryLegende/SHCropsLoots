@@ -47,7 +47,7 @@ Tous les textes sont dans `messages.yml`, dont celui d'un loot trouvé (`loot-fo
 
 ## Configuration
 
-Fichiers par défaut repris du serveur (secrets remplacés par `CHANGE_ME`). Cliquez sur un fichier pour l'ouvrir :
+Fichiers par défaut, avec des valeurs d'exemple. Cliquez sur un fichier pour l'ouvrir :
 
 <pre>
 plugins/SHCropsLoots/
